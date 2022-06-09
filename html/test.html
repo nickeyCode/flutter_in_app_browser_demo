@@ -1,0 +1,34 @@
+<html>
+    <head>
+    </head>
+    <body style="font-size: 90px;">
+        Timer:<div id="timerText"></div>
+        i m test page
+        <br/>
+        <button  id="btn_agree"><div style="font-size: 100px;">agree</div></button>
+        <br />
+        callback data：
+        <div id="callBackData"></div>
+
+
+        <script type="text/javascript">
+            var btnAgree = document.getElementById("btn_agree");
+            var callBackData = document.getElementById("callBackData");
+            var timerText = document.getElementById("timerText");
+            var time = 0;
+            timerText.innerText = time;
+            btnAgree.addEventListener("click",function(){
+                window.flutter_inappwebview.callHandler("verifyUser","111","bbb")
+                    .then(function(result){
+                        callBackData.innerText = result;
+                    }); 
+            });
+            setInterval(function(){
+                time ++;
+                timerText.innerText = time;
+            },1000);
+
+        </script>
+    </body>
+
+</html>
